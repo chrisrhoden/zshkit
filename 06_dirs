@@ -1,10 +1,8 @@
-
 alias fd=pushd
 alias sd=popd
 
-alias cdh="cd /Library/WebServer/hosts/"
-alias cdws="cd ~/Repositories"
-alias cdgems="cd /opt/local/lib/ruby/gems/1.8/gems"
+alias sites="cd /Library/WebServer/Sites/; ls"
+alias work="cd ~/Work; ls"
 
 
 
