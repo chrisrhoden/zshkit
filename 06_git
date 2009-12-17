@@ -1,9 +1,6 @@
-
-# source ~/.git_auto_complete.sh
-
 if [[ -x `which git` ]]; then
   
-  # Promt Work
+  # Prompt Work
   
 	function git-branch-name () {
 		git branch 2> /dev/null | grep ^\* | sed s/^\*\ //
