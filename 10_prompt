@@ -4,7 +4,7 @@
 
 setopt prompt_subst
 
-PROMPT=$'%{$reset_color%}%{$fg[cyan]%}%m%{$reset_color%}:%{$fg[yellow]%}%.%{$reset_color%}%{$(git-prompt)%} '
+PROMPT=$'%{$reset_color%}%{$fg[cyan]%}%m %{$fg[yellow]%}%.%{$reset_color%}%{$(git-prompt)%}%(!.#.:) '
 
 
 

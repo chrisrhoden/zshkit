@@ -15,18 +15,15 @@ if [[ -x `which git` ]]; then
 		branch=$(git-branch-name)
 		if [[ x$branch != x ]]; then
 			dirty_color=$fg[green]
-			caret=%#
 			if [[ $(git-dirty) = 1 ]] { dirty_color=$fg[red]; caret=✗ }
-			[ x$branch != x ] && echo "(%{$dirty_color%}$branch$(git-stash-count)%{$reset_color%})%{$caret%}%{$reset_color%}"
-		else
-		    echo "%#"
+			[ x$branch != x ] && echo "(%{$dirty_color%}$branch%{$fg[blue]%}$(git-stash-count)%{$reset_color%})"
 		fi
 	}
 	
 	function git-stash-count() {
     branch=$(git-branch-name)
     count=$(git stash list | grep "${branch}" | wc -l | awk '{print $1}')
-    [ $count != 0 ] && echo ":$count"
+    [ $count != 0 ] && echo " $count"
   }
 	
 	# SVN Macros
