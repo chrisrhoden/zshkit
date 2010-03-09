@@ -1,2 +1,4 @@
 alias emerge='sudo emerge'
 alias e='emerge'
+alias etc-update='sudo etc-update'
+alias etc-u='etc-update'
