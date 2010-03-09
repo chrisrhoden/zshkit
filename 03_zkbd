@@ -1,1 +1,2 @@
+bindkey -e
 [[ -f ~/.zkbd/$TERM-$VENDOR-$OSTYPE ]] && source ~/.zkbd/$TERM-$VENDOR-$OSTYPE
