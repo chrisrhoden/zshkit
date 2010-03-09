@@ -1,2 +1,3 @@
 bindkey -e
+bindkey "${terminfo[kdch1]}" delete-char
 [[ -f ~/.zkbd/$TERM-$VENDOR-$OSTYPE ]] && source ~/.zkbd/$TERM-$VENDOR-$OSTYPE
