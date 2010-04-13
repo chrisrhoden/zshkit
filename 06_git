@@ -15,7 +15,7 @@ if [[ -x `which git` ]]; then
 		branch=$(git-branch-name)
 		if [[ x$branch != x ]]; then
 			dirty_color=$fg[green]
-			if [[ $(git-dirty) = 1 ]] { dirty_color=$fg[red]; caret=✗ }
+			if [[ $(git-dirty) = 1 ]] { dirty_color=$fg[red]; }
 			[ x$branch != x ] && echo "(%{$dirty_color%}$branch%{$fg[blue]%}$(git-stash-count)%{$reset_color%})"
 		fi
 	}
@@ -100,12 +100,41 @@ alias gba='git branch -a'
 
 # Svn Helpers
 alias gsp="git svn dcommit"
-
+alias svn='git svn'
 # Utilitarian
 alias grmut='git ls-files -o --exclude-from=.gitignore | xargs rm'
 alias gits="ls /opt/local/bin/ | grep git"
 alias gh="github"
 alias grb_gh="open http://github.com/webmat/git_remote_branch/tree/master"
+
+git-my-externals () {
+	#defaults:
+	[ x$GITMYEXTDIR != x ] || GITMYEXTDIR='~/git_svn_repos'
+	
+	pushd `pwd`
+	if [ x$1 != x ]
+	then
+		cd $1
+	fi
+	for external in `git svn show-externals | egrep -v '^#' | tr ' ' '#'`
+	do
+		external=`echo $external |tr '#' ' '`
+		filepath=`echo $external | awk '{print $1}'` 
+		url=`echo $external | awk '{print $2}'`
+		if [ ! -d $GITMYEXTDIR/$url/.git ]
+		then
+			git svn clone $url $GITMYEXTDIR/$url
+			pushd `pwd`
+			cd $GITMYEXTDIR/$url
+			git gc --aggressive
+			popd
+		fi
+	    git clone $GITMYEXTDIR/$url .$filepath
+		echo $filepath >> .gitignore
+		git-my-externals `pwd`$filepath
+	done
+	popd
+}
 
 
 
