@@ -1,3 +1,4 @@
+if [[ -s /Users/chris/.rvm/scripts/rvm ]] ; then source /Users/chris/.rvm/scripts/rvm ; fi
 path=(/Library/Android/tools/ /usr/local/bin /usr/local/sbin /opt/local/bin /opt/local/sbin /opt/local/lib/mysql5/bin /opt/local/apache2/bin /opt/local/lib/postgresql83/bin $path)
 manpath=(/usr/local/share/man /opt/local/share/man $manpath)
 infopath=(/usr/local/share/info /opt/local/share/info $infopath)
