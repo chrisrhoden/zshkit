@@ -1,0 +1,16 @@
+function rvm-prompt() {
+  gemset=$(rvm-gemset)
+  rubyname=$(rvm-ruby-name)
+  if [[ x$gemset != x ]]; then
+    rubyname="$rubyname%{$fg[white]%}#%{$fg[green]%}$gemset"
+  fi
+  echo "%{$fg[red]%}$rubyname %{$reset_color%}"
+}
+
+function rvm-ruby-name(){
+  echo `rvm info | head -1 | cut -d@ -f1 | sed -e 's/:$//' | sed -e 's/^ruby-//'`
+}
+
+function rvm-gemset(){
+  echo `rvm info | head -1 | grep @ | cut -d@ -f2 | sed -e 's/:$//'`
+}
