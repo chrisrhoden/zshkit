@@ -3,8 +3,8 @@ if [[ -x `which git` ]]; then
   # Prompt Work
   
 	function git-branch-name () {
-		git branch 2> /dev/null | grep ^\* | sed s/^\*\ //
-	}
+	  (git branch | egrep "^\*" | sed -e "s/^\*\ //" ) 2> /dev/null
+  }
 	
 	function git-dirty () {
 		git status | grep "nothing to commit (working directory clean)"
@@ -100,7 +100,7 @@ alias gba='git branch -a'
 
 # Svn Helpers
 alias gsp="git svn dcommit"
-alias svn='git svn'
+#alias svn='git svn'
 # Utilitarian
 alias grmut='git ls-files -o --exclude-from=.gitignore | xargs rm'
 alias gits="ls /opt/local/bin/ | grep git"
