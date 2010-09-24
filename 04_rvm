@@ -1,6 +1,8 @@
 function rvm-prompt() {
-  gemset=$(rvm-gemset)
   rubyname=$(rvm-ruby-name)
+  if [[ x$rubyname != x ]]; then
+    gemset=$(rvm-gemset)
+  fi
   if [[ x$gemset != x ]]; then
     rubyname="$rubyname%{$fg[white]%}#%{$fg[green]%}$gemset"
   fi
@@ -8,9 +10,9 @@ function rvm-prompt() {
 }
 
 function rvm-ruby-name(){
-  rvm info 2> /dev/null| egrep -v '^$' | head -1 | cut -d@ -f1 | sed -e 's/:$//' | sed -e 's/^ruby-//'
+  rvm info 2> /dev/null | head -2 | tail -1 | cut -d@ -f1 | sed -e 's/:$//' | sed -e 's/^ruby-//'
 }
 
 function rvm-gemset(){
-  echo `rvm info 2> /dev/null| head -1 | grep @ | cut -d@ -f2 | sed -e 's/:$//'`
+  rvm info 2> /dev/null | head -2 | tail -1 | grep @ | cut -d@ -f2 | sed -e 's/:$//'
 }
