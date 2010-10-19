@@ -4,7 +4,7 @@
 
 setopt prompt_subst
 
-PROMPT=$'%{$reset_color%}%{$fg[cyan]%}%m $(rvm-prompt)%{$fg[yellow]%}%.%{$reset_color%}$(git-prompt)%(!.#.:) '
+PROMPT=$'%{$reset_color%}%{$fg[black]%}%m $(rvm-prompt)%{$fg[magenta]%}%.%{$reset_color%}$(git-prompt)%(!.#.:) '
 
 
 
@@ -29,8 +29,8 @@ function title() {
 }
 
 # precmd is called just before the prompt is printed
-function precmd()  { title "zsh" "$USER@%m" "%35<...<%~" }
+function precmd()  { title "%m" "%." }
 
 # preexec is called just before any command line is executed
-function preexec() { title "$1"  "$USER@%m" "%55<...<%~" }
+function preexec() { title "$1"  "%m" "%." }
 
