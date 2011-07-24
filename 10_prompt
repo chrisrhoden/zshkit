@@ -4,7 +4,7 @@
 
 setopt prompt_subst
 
-PROMPT=$'%{$reset_color%}%{$fg[black]%}%m $(rvm-prompt)%{$fg[magenta]%}%.%{$reset_color%}$(git-prompt)%(!.#.:) '
+PROMPT=$'%{$reset_color%}%{$fg[black]%}%m $(my-rvm-prompt)%{$fg[magenta]%}%.%{$reset_color%}$(git-prompt)%(!.#.:) '
 
 
 
